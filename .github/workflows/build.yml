@@ -7,10 +7,10 @@ on:
 jobs:
   build:
     env:
-      PROJECT_REPOSITORY: watchexec/watchexec
-      PROJECT_VERSION: v2.3.2
-      PROJECT_PATH: watchexec
-      PROJECT_BIN: watchexec
+      PROJECT_REPOSITORY: astral-sh/uv
+      PROJECT_VERSION: 0.9.30
+      PROJECT_PATH: uv
+      PROJECT_BIN: uv
     strategy:
       matrix:
         os: [ubuntu-24.04, windows-2022]
@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Windows Config
-        if: matrix.os == 'Windows'
+        if: runner.os == 'Windows'
         shell: pwsh
         run: |
           git config --system core.longpaths true
@@ -35,7 +35,7 @@ jobs:
           echo "Removed link.exe in git"
 
       - name: Setup MSVC
-        if: matrix.os == 'Windows'
+        if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
         with:
           toolset: 14.29
