@@ -67,13 +67,20 @@ jobs:
           cargo update
           cargo b -r
 
-      - name: Archive
+      - name: Linux Archive
+        if: runner.os == 'Linux'
         uses: actions/upload-artifact@v5
         with:
           name: ${{ env.PROJECT_BIN }}_${{ runner.os }}
           path: |
             ${{ env.PROJECT_PATH }}/target/release/*.so
-            ${{ env.PROJECT_PATH }}/target/release/*.dll
+            ${{ env.PROJECT_PATH }}/target/release/${{ env.PROJECT_BIN }}
 
-            ${{ env.PROJECT_PATH }}/target/release/${{ env.PROJECT_BIN }}*
+      - name: Windows Archive
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ env.PROJECT_BIN }}_${{ runner.os }}
+          path: |
+            ${{ env.PROJECT_PATH }}/target/release/*.dll
             ${{ env.PROJECT_PATH }}/target/release/${{ env.PROJECT_BIN }}*.exe
