@@ -1,13 +1,11 @@
 [build]
-rustflags = ["-Ctarget-cpu=haswell"]
+rustflags = ["-C", "target-cpu=znver3"]
 
-[target.'cfg(target_os = "windows")']
-rustflags = [
-"--cfg", "windows_slim_errors"
-]
-[target.'cfg(target_os = "linux")']
-rustflags = [
-]
+[target.'cfg(unix)']
+rustflags = []
+
+[target.'cfg(windows)']
+rustflags = ["--cfg", "windows_slim_errors"]
 
 [profile.release]
 codegen-units = 1
