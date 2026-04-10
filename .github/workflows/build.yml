@@ -8,7 +8,7 @@ jobs:
   build:
     env:
       PROJECT_REPOSITORY: astral-sh/uv
-      PROJECT_VERSION: 0.9.30
+      PROJECT_VERSION: 0.10.12
       PROJECT_PATH: uv
       PROJECT_BIN: uv
     strategy:
