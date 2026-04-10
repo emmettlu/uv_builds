@@ -69,7 +69,7 @@ jobs:
 
       - name: Linux Archive
         if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ env.PROJECT_BIN }}_${{ runner.os }}
           path: |
@@ -78,7 +78,7 @@ jobs:
 
       - name: Windows Archive
         if: runner.os == 'Windows'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ env.PROJECT_BIN }}_${{ runner.os }}
           path: |
